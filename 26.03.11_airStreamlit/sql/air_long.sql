@@ -117,8 +117,7 @@ order by `년도` asc
 create or replace view db_air.`장거리TOP10` as
 with 장거리랭킹 as (
 	select
-		`출발지`,
-        `도착지`,
+		CONCAT(`출발지`, '→', `도착지`) AS `운항노선`,
         `년도`,
         `평균도착지연시간`,
         `비행거리`,
@@ -126,8 +125,7 @@ with 장거리랭킹 as (
 	from db_air.`장거리노선`
 )
 select
-	`출발지`,
-    `도착지`,
+	`운항노선`,
     `년도`,
     `평균도착지연시간`,
     `비행거리`
