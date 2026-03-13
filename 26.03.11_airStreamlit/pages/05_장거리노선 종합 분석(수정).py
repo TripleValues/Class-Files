@@ -20,10 +20,8 @@ st.markdown("""
     .main-title   { font-size: 2rem; font-weight: 800; color: #1a3c6e; }
     .section-title{ font-size: 1.25rem; font-weight: 700; color: #2c5f9e;
                     border-left: 5px solid #2c5f9e; padding-left: 10px; margin-top: 1rem; }
-    .desc-box     { background: #f0f6ff; border-radius: 10px; padding: 14px 18px;
+    .desc-box     { background: #8ad4ff; border-radius: 10px; padding: 14px 18px;
                     font-size: 0.92rem; color: #333; line-height: 1.7; margin-bottom: 8px; }
-    .error-box    { background: #fff0f0; border-radius: 10px; padding: 14px 18px;
-                    font-size: 0.92rem; color: #c0392b; border-left: 4px solid #e74c3c; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -326,66 +324,3 @@ with st.expander("📋 원본 데이터 테이블 보기"):
             st.dataframe(data2, use_container_width=True)
         else:
             st.info("데이터 없음")
-
-
-
-# st.subheader("📌 연별 통계 요약")
-# years = sorted(data1['년도'].unique())
-# selected_year = st.selectbox(
-#     "년도선택",
-#     years,
-#     index=None,
-#     placeholder="년도를 선택하세요"
-# )
-# year_data = data[data['년도'] == selected_year]
-# col5, col6, col7, col8 = st.columns(4)
-# if selected_year:
-#   with col5:
-#       st.metric("기준", f"{selected_year}년")
-#   with col6:
-#       st.metric("최대 비행거리", f"{year_data['최대비행거리'].max()}마일")
-#   with col7:
-#       st.metric("전체 평균 지연시간", f"{round(year_data['평균지연시간'].mean(), 1)}분")
-#   with col8:
-#       st.metric("최대 지연 기록", f"{year_data['최대지연시간'].max()}분")
-
-# st.markdown("---")
-
-# c1, c2 = st.columns([6, 4])
-
-# with c1:
-#   st.subheader("⏰ 연도별 평균 및 최대 지연시간")
-#   line = px.line(
-#     data,
-#     x="년도",
-#     y=["평균지연시간", "최대지연시간"], 
-#     markers=True,
-#     template="plotly_white",
-#     color_discrete_sequence=["#FF4B4B", "#31333F"]
-#   )
-#   line.update_layout(
-#     hovermode="x unified", 
-#     yaxis_title="지연시간",
-#     legend=dict(
-#       orientation="h", 
-#       yanchor="bottom", 
-#       y=1.02, 
-#       xanchor="right", 
-#       x=1
-#     )
-#   )
-#   st.plotly_chart(line, use_container_width=True)
-
-# with c2:
-#   st.subheader("📊 연도별 장거리 노선 수")
-#   bar = px.bar(
-#     data, 
-#     x="년도", 
-#     y="노선수", 
-#     text_auto=True,
-#     color="최대비행거리", 
-#     color_continuous_scale="Magma",
-#     template="plotly_white"
-#   )
-#   bar.update_layout(showlegend=False)
-#   st.plotly_chart(bar, use_container_width=True)
